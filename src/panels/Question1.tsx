@@ -9,7 +9,7 @@ import {
 
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
-import { barberAnswers } from '../store';
+import { saveBarberAnswer } from '../store';
 
 const options = [
   {
@@ -38,7 +38,7 @@ export const Question1: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
 
   const handleAnswer = (answer: string) => {
-    barberAnswers.hairLength = answer;
+    saveBarberAnswer('hairLength', answer);
     routeNavigator.push('/question2');
   };
 

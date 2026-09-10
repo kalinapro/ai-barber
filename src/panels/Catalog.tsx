@@ -11,12 +11,13 @@ import {
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 import { hairstyles } from '../recommendations';
-import { saveSelectedHairstyle } from '../selectedHairstyleStore';
+import { useSelectedHairstyle } from '../selectedHairstyleStore';
 
 type Category = 'Короткие' | 'Средние' | 'Длинные';
 
 export const Catalog: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
+  const { saveSelectedHairstyle } = useSelectedHairstyle();
 
   const [category, setCategory] = useState<Category>('Короткие');
 

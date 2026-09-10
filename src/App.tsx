@@ -30,6 +30,7 @@ import {
 import {
   DEFAULT_VIEW_PANELS,
 } from './routes';
+import { SelectedHairstyleProvider } from './selectedHairstyleStore';
 
 export const App = () => {
   const {
@@ -54,7 +55,8 @@ export const App = () => {
   }, []);
 
   return (
-    <SplitLayout>
+    <SelectedHairstyleProvider>
+      <SplitLayout>
       <SplitCol>
         <View activePanel={activePanel}>
           <Home
@@ -76,6 +78,7 @@ export const App = () => {
           <Persik id="persik" />
         </View>
       </SplitCol>
-    </SplitLayout>
+      </SplitLayout>
+    </SelectedHairstyleProvider>
   );
 };

@@ -10,13 +10,13 @@ import {
 
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
-import { barberAnswers } from '../store';
+import { saveBarberAnswer } from '../store';
 
 export const Question6: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
 
   const handleAnswer = (answer: string) => {
-    barberAnswers.faceShape = answer;
+    saveBarberAnswer('faceShape', answer);
     routeNavigator.push('/results');
   };
 
