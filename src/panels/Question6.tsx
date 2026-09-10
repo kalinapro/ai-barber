@@ -4,13 +4,46 @@ import {
   PanelHeader,
   Group,
   Div,
-  Button,
   NavIdProps,
 } from '@vkontakte/vkui';
 
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 import { saveBarberAnswer } from '../store';
+import './panels.css';
+
+const options = [
+  {
+    label: 'Овальная',
+    value: 'Овальная',
+    image: '/questions/face-shape/oval.jpg',
+  },
+  {
+    label: 'Круглая',
+    value: 'Круглая',
+    image: '/questions/face-shape/round.jpg',
+  },
+  {
+    label: 'Квадратная',
+    value: 'Квадратная',
+    image: '/questions/face-shape/square.jpg',
+  },
+  {
+    label: 'Вытянутая',
+    value: 'Вытянутая',
+    image: '/questions/face-shape/long.jpg',
+  },
+  {
+    label: 'Треугольная',
+    value: 'Треугольная',
+    image: '/questions/face-shape/triangular.jpg',
+  },
+  {
+    label: 'Не знаю',
+    value: 'Не знаю',
+    image: '/questions/face-shape/other.jpg',
+  },
+];
 
 export const Question6: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
@@ -26,80 +59,56 @@ export const Question6: FC<NavIdProps> = ({ id }) => {
 
       <Group>
         <Div>
-          <h2 style={{ textAlign: 'center' }}>
-            Какая у тебя форма лица?
-          </h2>
-
-          <p
-            style={{
-              textAlign: 'center',
-              opacity: 0.7,
-              marginBottom: 24,
-            }}
-          >
-            Вопрос 6 из 6
-          </p>
-
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 12,
-            }}
-          >
-            <Button
-              stretched
-              size="l"
-              mode="secondary"
-              onClick={() => handleAnswer('Овальная')}
+          <div className="panel-content">
+            <h1
+              style={{
+                textAlign: 'center',
+                marginBottom: 8,
+              }}
             >
-              Овальная
-            </Button>
+              Какая у тебя форма лица?
+            </h1>
 
-            <Button
-              stretched
-              size="l"
-              mode="secondary"
-              onClick={() => handleAnswer('Круглая')}
+            <p
+              style={{
+                textAlign: 'center',
+                opacity: 0.7,
+                marginBottom: 8,
+              }}
             >
-              Круглая
-            </Button>
+              Вопрос 6 из 6
+            </p>
 
-            <Button
-              stretched
-              size="l"
-              mode="secondary"
-              onClick={() => handleAnswer('Квадратная')}
+            <p
+              style={{
+                textAlign: 'center',
+                opacity: 0.7,
+                marginTop: 0,
+                marginBottom: 24,
+              }}
             >
-              Квадратная
-            </Button>
+              Если не уверен — выбери «Не знаю».
+            </p>
 
-            <Button
-              stretched
-              size="l"
-              mode="secondary"
-              onClick={() => handleAnswer('Вытянутая')}
-            >
-              Прямоугольная / вытянутая
-            </Button>
+            <div className="answer-card-grid">
+              {options.map((option) => (
+                <button
+                  key={option.value}
+                  onClick={() => handleAnswer(option.value)}
+                  className="answer-card"
+                >
+                  <img
+                    src={option.image}
+                    alt={option.label}
+                    className="answer-card__image"
+                  />
 
-            <Button
-              stretched
-              size="l"
-              mode="secondary"
-              onClick={() => handleAnswer('Треугольная')}
-            >
-              Треугольная
-            </Button>
-
-            <Button
-              stretched
-              size="l"
-              mode="secondary"
-              onClick={() => handleAnswer('Не знаю')}
-            >
-              Не знаю
-            </Button>
+                  <div className="answer-card__label">
+                    {option.label}
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
         </Div>
       </Group>
