@@ -4,13 +4,41 @@ import {
   PanelHeader,
   Group,
   Div,
-  Button,
   NavIdProps,
 } from '@vkontakte/vkui';
 
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 import { saveBarberAnswer } from '../store';
+import './panels.css';
+
+const options = [
+  {
+    label: 'Тонкие',
+    value: 'Тонкие',
+    image: '/questions/hair-features/thin.jpg',
+  },
+  {
+    label: 'Густые',
+    value: 'Густые',
+    image: '/questions/hair-features/thick.jpg',
+  },
+  {
+    label: 'Вьющиеся',
+    value: 'Вьющиеся',
+    image: '/questions/hair-features/curly.jpg',
+  },
+  {
+    label: 'Залысины',
+    value: 'Залысины',
+    image: '/questions/hair-features/receding.jpg',
+  },
+  {
+    label: 'Нет особенностей',
+    value: 'Нет особенностей',
+    image: '/questions/hair-features/normal.jpg',
+  },
+];
 
 export const Question5: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
@@ -26,71 +54,45 @@ export const Question5: FC<NavIdProps> = ({ id }) => {
 
       <Group>
         <Div>
-          <h2 style={{ textAlign: 'center' }}>
-            Есть ли особенности волос?
-          </h2>
-
-          <p
-            style={{
-              textAlign: 'center',
-              opacity: 0.7,
-              marginBottom: 24,
-            }}
-          >
-            Вопрос 5 из 6
-          </p>
-
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 12,
-            }}
-          >
-            <Button
-              stretched
-              size="l"
-              mode="secondary"
-              onClick={() => handleAnswer('Тонкие')}
+          <div className="panel-content">
+            <h1
+              style={{
+                textAlign: 'center',
+                marginBottom: 8,
+              }}
             >
-              Тонкие волосы
-            </Button>
+              Какие у тебя волосы?
+            </h1>
 
-            <Button
-              stretched
-              size="l"
-              mode="secondary"
-              onClick={() => handleAnswer('Густые')}
+            <p
+              style={{
+                textAlign: 'center',
+                opacity: 0.7,
+                marginBottom: 24,
+              }}
             >
-              Густые волосы
-            </Button>
+              Вопрос 5 из 6
+            </p>
 
-            <Button
-              stretched
-              size="l"
-              mode="secondary"
-              onClick={() => handleAnswer('Вьющиеся')}
-            >
-              Вьющиеся волосы
-            </Button>
+            <div className="answer-card-grid">
+              {options.map((option) => (
+                <button
+                  key={option.value}
+                  onClick={() => handleAnswer(option.value)}
+                  className="answer-card"
+                >
+                  <img
+                    src={option.image}
+                    alt={option.label}
+                    className="answer-card__image"
+                  />
 
-            <Button
-              stretched
-              size="l"
-              mode="secondary"
-              onClick={() => handleAnswer('Залысины')}
-            >
-              Есть залысины
-            </Button>
-
-            <Button
-              stretched
-              size="l"
-              mode="secondary"
-              onClick={() => handleAnswer('Нет особенностей')}
-            >
-              Ничего из этого
-            </Button>
+                  <div className="answer-card__label">
+                    {option.label}
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
         </Div>
       </Group>
