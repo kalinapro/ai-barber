@@ -15,6 +15,23 @@ import { hairstyles } from '../recommendations';
 import {
   useSelectedHairstyle,
 } from '../selectedHairstyleStore';
+import './panels.css';
+
+const steps = [
+  'Ответь на 6 коротких вопросов',
+  'AI-Барбер учтёт длину и особенности волос, форму лица и предпочтения',
+  'Получи 3 подходящие стрижки',
+  'Выбери понравившийся вариант',
+  'Получи подсказку, что сказать барберу',
+];
+
+const benefits = [
+  ['✨', '3 персональных варианта'],
+  ['📷', 'Фото каждой стрижки'],
+  ['💡', 'Объяснение, почему она подходит'],
+  ['💬', 'Инструкция для барбера'],
+  ['✂️', 'Доступ к каталогу из 20 стрижек'],
+];
 
 export interface HomeProps extends NavIdProps {
   fetchedUser?: UserInfo;
@@ -35,51 +52,55 @@ export const Home: FC<HomeProps> = ({ id }) => {
 
       <Group>
         <Div>
-          <div
-            style={{
-              width: '100%',
-              maxWidth: 900,
-              margin: '0 auto',
-            }}
-          >
-            <div
-              style={{
-                textAlign: 'center',
-                fontSize: 48,
-                marginTop: 24,
-              }}
-            >
-              ✂️
-            </div>
+          <div className="panel-content">
+            <section className="home-hero">
+              <div className="home-hero__icon" aria-hidden="true">✂️</div>
+              <h1>Найди стрижку, которая подходит именно тебе</h1>
+              <p className="home-hero__description">
+                AI-Барбер подберёт варианты по твоим волосам, форме лица
+                и стилю — и подскажет, как объяснить выбор барберу.
+              </p>
+              <div className="home-hero__facts" aria-label="Кратко о подборе">
+                <span className="home-hero__fact">6 вопросов</span>
+                <span className="home-hero__fact">Около 2 минут</span>
+                <span className="home-hero__fact">3 рекомендации</span>
+              </div>
+              <div className="home-hero__button">
+                <Button
+                  stretched
+                  size="l"
+                  onClick={() => routeNavigator.push('/question1')}
+                >
+                  Подобрать стрижку
+                </Button>
+              </div>
+            </section>
 
-            <h1
-              style={{
-                textAlign: 'center',
-                marginBottom: 8,
-              }}
-            >
-              Какая стрижка тебе подходит?
-            </h1>
+            <section className="home-section">
+              <h2 className="home-section__title">Как это работает</h2>
+              <div className="steps-grid">
+                {steps.map((step, index) => (
+                  <div className="step-card" key={step}>
+                    <div className="step-card__number">{index + 1}</div>
+                    <div className="step-card__text">{step}</div>
+                  </div>
+                ))}
+              </div>
+            </section>
 
-            <p
-              style={{
-                textAlign: 'center',
-                opacity: 0.7,
-                marginBottom: 24,
-                lineHeight: 1.5,
-              }}
-            >
-              Ответь на несколько вопросов, и AI-Барбер
-              подберёт подходящие варианты.
-            </p>
-
-            <Button
-              stretched
-              size="l"
-              onClick={() => routeNavigator.push('/question1')}
-            >
-              Подобрать стрижку
-            </Button>
+            <section className="home-section">
+              <h2 className="home-section__title">Что ты получишь</h2>
+              <div className="benefits-grid">
+                {benefits.map(([icon, benefit]) => (
+                  <div className="benefit-card" key={benefit}>
+                    <span className="benefit-card__icon" aria-hidden="true">
+                      {icon}
+                    </span>
+                    <span>{benefit}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
 
             {savedHairstyle && (
               <div

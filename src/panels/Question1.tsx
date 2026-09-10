@@ -10,6 +10,7 @@ import {
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 import { saveBarberAnswer } from '../store';
+import './panels.css';
 
 const options = [
   {
@@ -48,13 +49,7 @@ export const Question1: FC<NavIdProps> = ({ id }) => {
 
       <Group>
         <Div>
-          <div
-            style={{
-              width: '100%',
-              maxWidth: 900,
-              margin: '0 auto',
-            }}
-          >
+          <div className="panel-content">
             <h1
               style={{
                 textAlign: 'center',
@@ -74,47 +69,21 @@ export const Question1: FC<NavIdProps> = ({ id }) => {
               Вопрос 1 из 6
             </p>
 
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns:
-                  'repeat(auto-fit, minmax(180px, 1fr))',
-                gap: 16,
-              }}
-            >
+            <div className="answer-card-grid">
               {options.map((option) => (
                 <button
                   key={option.value}
                   onClick={() => handleAnswer(option.value)}
-                  style={{
-                    padding: 0,
-                    border: '1px solid rgba(0, 0, 0, 0.12)',
-                    borderRadius: 16,
-                    overflow: 'hidden',
-                    background: 'white',
-                    cursor: 'pointer',
-                    textAlign: 'left',
-                  }}
+                  className="answer-card"
                 >
                   <img
                     src={option.image}
                     alt={option.label}
-                    style={{
-                      display: 'block',
-                      width: '100%',
-                      aspectRatio: '4 / 5',
-                      objectFit: 'cover',
-                      objectPosition: 'center top',
-                    }}
+                    className="answer-card__image"
                   />
 
                   <div
-                    style={{
-                      padding: 14,
-                      fontSize: 18,
-                      fontWeight: 600,
-                      textAlign: 'center',
-                    }}
+                    className="answer-card__label"
                   >
                     {option.label}
                   </div>
