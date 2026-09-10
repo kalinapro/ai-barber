@@ -11,13 +11,14 @@ import {
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 import { hairstyles } from '../recommendations';
-import { selectedHairstyle } from '../selectedHairstyleStore';
+import { useSelectedHairstyle } from '../selectedHairstyleStore';
 
 export const SelectedHairstyle: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
+  const { selectedHairstyleId } = useSelectedHairstyle();
 
   const hairstyle = hairstyles.find(
-    (item) => item.id === selectedHairstyle.id,
+    (item) => item.id === selectedHairstyleId,
   );
 
   if (!hairstyle) {

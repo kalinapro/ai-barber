@@ -9,13 +9,13 @@ import {
 } from '@vkontakte/vkui';
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
-import { barberAnswers } from '../store';
+import { saveBarberAnswer } from '../store';
 
 export const Question3: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
 
   const handleAnswer = (answer: string) => {
-    barberAnswers.changeLevel = answer;
+    saveBarberAnswer('changeLevel', answer);
     routeNavigator.push('/question4');
   };
 

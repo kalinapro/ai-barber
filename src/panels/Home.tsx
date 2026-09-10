@@ -13,8 +13,7 @@ import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 import { hairstyles } from '../recommendations';
 import {
-  selectedHairstyle,
-  clearSelectedHairstyle,
+  useSelectedHairstyle,
 } from '../selectedHairstyleStore';
 
 export interface HomeProps extends NavIdProps {
@@ -23,9 +22,11 @@ export interface HomeProps extends NavIdProps {
 
 export const Home: FC<HomeProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
+  const { selectedHairstyleId, clearSelectedHairstyle } =
+    useSelectedHairstyle();
 
   const savedHairstyle = hairstyles.find(
-    (item) => item.id === selectedHairstyle.id,
+    (item) => item.id === selectedHairstyleId,
   );
 
   return (
@@ -172,10 +173,7 @@ export const Home: FC<HomeProps> = ({ id }) => {
     stretched
     size="l"
     mode="tertiary"
-    onClick={() => {
-      clearSelectedHairstyle();
-      window.location.reload();
-    }}
+    onClick={clearSelectedHairstyle}
   >
     Удалить выбор
   </Button>

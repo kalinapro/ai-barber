@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import {
   Panel,
   PanelHeader,
@@ -10,12 +10,28 @@ import {
 
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
-import { barberAnswers } from '../store';
+import { barberAnswers, getFirstUnansweredQuestion } from '../store';
 import { getRecommendations } from '../recommendations';
-import { saveSelectedHairstyle } from '../selectedHairstyleStore';
+import { useSelectedHairstyle } from '../selectedHairstyleStore';
 
 export const Results: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
+  const { saveSelectedHairstyle } = useSelectedHairstyle();
+  const firstUnansweredQuestion = getFirstUnansweredQuestion();
+
+  useEffect(() => {
+    if (firstUnansweredQuestion) {
+      routeNavigator.replace(firstUnansweredQuestion);
+    }
+  }, [firstUnansweredQuestion, routeNavigator]);
+
+  if (firstUnansweredQuestion) {
+    return (
+      <Panel id={id}>
+        <PanelHeader>AI-Барбер</PanelHeader>
+      </Panel>
+    );
+  }
 
   const recommendations = getRecommendations(barberAnswers).slice(0, 3);
 
