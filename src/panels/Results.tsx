@@ -104,6 +104,8 @@ export const Results: FC<NavIdProps> = ({ id }) => {
                   <img
                     src={hairstyle.image}
                     alt={hairstyle.name}
+                    decoding="async"
+                    loading="lazy"
                     style={{
                       display: 'block',
                       width: '100%',

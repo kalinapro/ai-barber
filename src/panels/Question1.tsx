@@ -16,22 +16,22 @@ const options = [
   {
     label: 'Очень короткие',
     value: 'Очень короткие',
-    image: '/questions/hair-length/very-short.jpg',
+    image: '/questions/hair-length/very-short.webp',
   },
   {
     label: 'Короткие',
     value: 'Короткие',
-    image: '/questions/hair-length/short.jpg',
+    image: '/questions/hair-length/short.webp',
   },
   {
     label: 'Средние',
     value: 'Средние',
-    image: '/questions/hair-length/medium.jpg',
+    image: '/questions/hair-length/medium.webp',
   },
   {
     label: 'Длинные',
     value: 'Длинные',
-    image: '/questions/hair-length/long.jpg',
+    image: '/questions/hair-length/long.webp',
   },
 ];
 
@@ -79,6 +79,7 @@ export const Question1: FC<NavIdProps> = ({ id }) => {
                   <img
                     src={option.image}
                     alt={option.label}
+                    decoding="async"
                     className="answer-card__image"
                   />
 

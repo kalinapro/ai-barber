@@ -68,6 +68,7 @@ export const SelectedHairstyle: FC<NavIdProps> = ({ id }) => {
             <img
               src={hairstyle.image}
               alt={hairstyle.name}
+              decoding="async"
               style={{
                 display: 'block',
                 width: '100%',

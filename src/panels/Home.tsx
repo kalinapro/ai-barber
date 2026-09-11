@@ -133,6 +133,8 @@ export const Home: FC<HomeProps> = ({ id }) => {
                   <img
                     src={savedHairstyle.image}
                     alt={savedHairstyle.name}
+                    decoding="async"
+                    loading="lazy"
                     style={{
                       display: 'block',
                       width: '100%',
