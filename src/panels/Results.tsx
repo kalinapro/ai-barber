@@ -14,17 +14,18 @@ import { barberAnswers, getFirstUnansweredQuestion } from '../store';
 import { getRecommendations } from '../recommendations';
 import { useSelectedHairstyle } from '../selectedHairstyleStore';
 
-const MIN_MATCH_PERCENTAGE = 70;
-const MAX_MATCH_PERCENTAGE = 98;
+const MIN_MATCH_PERCENTAGE = 82;
+const MAX_MATCH_PERCENTAGE = 96;
+const EQUAL_SCORES_PERCENTAGE = 90;
 
-/** Converts recommendation scores into a presentation-only 70–98% scale. */
+/** Converts recommendation scores into a presentation-only 82–96% scale. */
 const scoreToPercentage = (
   score: number,
   lowestScore: number,
   highestScore: number,
 ) => {
   if (highestScore === lowestScore) {
-    return MAX_MATCH_PERCENTAGE;
+    return EQUAL_SCORES_PERCENTAGE;
   }
 
   const scorePosition =
@@ -297,7 +298,7 @@ export const Results: FC<NavIdProps> = ({ id }) => {
                     <span>Рекомендация №{index + 1}</span>
                   )}
                   <span className="result-card__match">
-                    Подходит на{' '}
+                    Совпадение по анкете{' '}
                     {scoreToPercentage(
                       hairstyle.score,
                       lowestScore,
