@@ -1058,7 +1058,7 @@ const hairstyleData: Omit<Hairstyle, 'image'>[] = [
 ];
 export const hairstyles: Hairstyle[] = hairstyleData.map((hairstyle) => ({
   ...hairstyle,
-  image: `/hairstyles/${hairstyle.id}.webp`,
+  image: `${import.meta.env.BASE_URL}hairstyles/${hairstyle.id}.webp`,
 }));
 
 function getScore(

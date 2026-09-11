@@ -10,38 +10,39 @@ import {
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 import { saveBarberAnswer } from '../store';
+import { publicAsset } from '../utils/publicAsset';
 import './panels.css';
 
 const options = [
   {
     label: 'Овальная',
     value: 'Овальная',
-    image: '/questions/face-shape/oval.webp',
+    image: publicAsset('questions/face-shape/oval.webp'),
   },
   {
     label: 'Круглая',
     value: 'Круглая',
-    image: '/questions/face-shape/round.webp',
+    image: publicAsset('questions/face-shape/round.webp'),
   },
   {
     label: 'Квадратная',
     value: 'Квадратная',
-    image: '/questions/face-shape/square.webp',
+    image: publicAsset('questions/face-shape/square.webp'),
   },
   {
     label: 'Вытянутая',
     value: 'Вытянутая',
-    image: '/questions/face-shape/long.webp',
+    image: publicAsset('questions/face-shape/long.webp'),
   },
   {
     label: 'Треугольная',
     value: 'Треугольная',
-    image: '/questions/face-shape/triangular.webp',
+    image: publicAsset('questions/face-shape/triangular.webp'),
   },
   {
     label: 'Не знаю',
     value: 'Не знаю',
-    image: '/questions/face-shape/other.webp',
+    image: publicAsset('questions/face-shape/other.webp'),
   },
 ];
 

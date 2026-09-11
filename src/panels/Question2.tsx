@@ -10,28 +10,29 @@ import {
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 import { saveBarberAnswer } from '../store';
+import { publicAsset } from '../utils/publicAsset';
 import './panels.css';
 
 const options = [
   {
     label: 'Классический',
     value: 'Классический',
-    image: '/questions/style/classic.webp',
+    image: publicAsset('questions/style/classic.webp'),
   },
   {
     label: 'Современный',
     value: 'Современный',
-    image: '/questions/style/modern.webp',
+    image: publicAsset('questions/style/modern.webp'),
   },
   {
     label: 'Спортивный',
     value: 'Спортивный',
-    image: '/questions/style/sporty.webp',
+    image: publicAsset('questions/style/sporty.webp'),
   },
   {
     label: 'Не знаю — выбери за меня',
     value: 'Не знаю',
-    image: '/questions/style/other.webp',
+    image: publicAsset('questions/style/other.webp'),
   },
 ];
 

@@ -10,28 +10,29 @@ import {
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 import { saveBarberAnswer } from '../store';
+import { publicAsset } from '../utils/publicAsset';
 import './panels.css';
 
 const options = [
   {
     label: 'Очень короткие',
     value: 'Очень короткие',
-    image: '/questions/hair-length/very-short.webp',
+    image: publicAsset('questions/hair-length/very-short.webp'),
   },
   {
     label: 'Короткие',
     value: 'Короткие',
-    image: '/questions/hair-length/short.webp',
+    image: publicAsset('questions/hair-length/short.webp'),
   },
   {
     label: 'Средние',
     value: 'Средние',
-    image: '/questions/hair-length/medium.webp',
+    image: publicAsset('questions/hair-length/medium.webp'),
   },
   {
     label: 'Длинные',
     value: 'Длинные',
-    image: '/questions/hair-length/long.webp',
+    image: publicAsset('questions/hair-length/long.webp'),
   },
 ];
 
