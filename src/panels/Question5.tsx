@@ -10,33 +10,34 @@ import {
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 import { saveBarberAnswer } from '../store';
+import { publicAsset } from '../utils/publicAsset';
 import './panels.css';
 
 const options = [
   {
     label: 'Тонкие',
     value: 'Тонкие',
-    image: '/questions/hair-features/thin.webp',
+    image: publicAsset('questions/hair-features/thin.webp'),
   },
   {
     label: 'Густые',
     value: 'Густые',
-    image: '/questions/hair-features/thick.webp',
+    image: publicAsset('questions/hair-features/thick.webp'),
   },
   {
     label: 'Вьющиеся',
     value: 'Вьющиеся',
-    image: '/questions/hair-features/curly.webp',
+    image: publicAsset('questions/hair-features/curly.webp'),
   },
   {
     label: 'Залысины',
     value: 'Залысины',
-    image: '/questions/hair-features/receding.webp',
+    image: publicAsset('questions/hair-features/receding.webp'),
   },
   {
     label: 'Нет особенностей',
     value: 'Нет особенностей',
-    image: '/questions/hair-features/normal.webp',
+    image: publicAsset('questions/hair-features/normal.webp'),
   },
 ];
 

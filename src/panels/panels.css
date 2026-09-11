@@ -5,6 +5,14 @@
   margin: 0 auto;
 }
 
+html,
+body,
+#root {
+  max-width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
 .home-hero {
   padding: 28px 20px;
   overflow: hidden;
