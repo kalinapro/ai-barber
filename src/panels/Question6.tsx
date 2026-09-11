@@ -16,32 +16,32 @@ const options = [
   {
     label: 'Овальная',
     value: 'Овальная',
-    image: '/questions/face-shape/oval.jpg',
+    image: '/questions/face-shape/oval.webp',
   },
   {
     label: 'Круглая',
     value: 'Круглая',
-    image: '/questions/face-shape/round.jpg',
+    image: '/questions/face-shape/round.webp',
   },
   {
     label: 'Квадратная',
     value: 'Квадратная',
-    image: '/questions/face-shape/square.jpg',
+    image: '/questions/face-shape/square.webp',
   },
   {
     label: 'Вытянутая',
     value: 'Вытянутая',
-    image: '/questions/face-shape/long.jpg',
+    image: '/questions/face-shape/long.webp',
   },
   {
     label: 'Треугольная',
     value: 'Треугольная',
-    image: '/questions/face-shape/triangular.jpg',
+    image: '/questions/face-shape/triangular.webp',
   },
   {
     label: 'Не знаю',
     value: 'Не знаю',
-    image: '/questions/face-shape/other.jpg',
+    image: '/questions/face-shape/other.webp',
   },
 ];
 
@@ -100,6 +100,7 @@ export const Question6: FC<NavIdProps> = ({ id }) => {
                   <img
                     src={option.image}
                     alt={option.label}
+                    decoding="async"
                     className="answer-card__image"
                   />
 

@@ -16,27 +16,27 @@ const options = [
   {
     label: 'Тонкие',
     value: 'Тонкие',
-    image: '/questions/hair-features/thin.jpg',
+    image: '/questions/hair-features/thin.webp',
   },
   {
     label: 'Густые',
     value: 'Густые',
-    image: '/questions/hair-features/thick.jpg',
+    image: '/questions/hair-features/thick.webp',
   },
   {
     label: 'Вьющиеся',
     value: 'Вьющиеся',
-    image: '/questions/hair-features/curly.jpg',
+    image: '/questions/hair-features/curly.webp',
   },
   {
     label: 'Залысины',
     value: 'Залысины',
-    image: '/questions/hair-features/receding.jpg',
+    image: '/questions/hair-features/receding.webp',
   },
   {
     label: 'Нет особенностей',
     value: 'Нет особенностей',
-    image: '/questions/hair-features/normal.jpg',
+    image: '/questions/hair-features/normal.webp',
   },
 ];
 
@@ -84,6 +84,7 @@ export const Question5: FC<NavIdProps> = ({ id }) => {
                   <img
                     src={option.image}
                     alt={option.label}
+                    decoding="async"
                     className="answer-card__image"
                   />
 

@@ -16,22 +16,22 @@ const options = [
   {
     label: 'Классический',
     value: 'Классический',
-    image: '/questions/style/classic.jpg',
+    image: '/questions/style/classic.webp',
   },
   {
     label: 'Современный',
     value: 'Современный',
-    image: '/questions/style/modern.jpg',
+    image: '/questions/style/modern.webp',
   },
   {
     label: 'Спортивный',
     value: 'Спортивный',
-    image: '/questions/style/sporty.jpg',
+    image: '/questions/style/sporty.webp',
   },
   {
     label: 'Не знаю — выбери за меня',
     value: 'Не знаю',
-    image: '/questions/style/other.jpg',
+    image: '/questions/style/other.webp',
   },
 ];
 
@@ -79,6 +79,7 @@ export const Question2: FC<NavIdProps> = ({ id }) => {
                   <img
                     src={option.image}
                     alt={option.label}
+                    decoding="async"
                     className="answer-card__image"
                   />
 
