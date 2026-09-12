@@ -72,9 +72,11 @@ export const Results: FC<NavIdProps> = ({ id }) => {
             .results-page {
               box-sizing: border-box;
               width: 100%;
-              max-width: 1160px;
+              max-width: 1120px;
+              min-width: 0;
               margin: 0 auto;
-              overflow: hidden;
+              padding-right: clamp(12px, 2.5vw, 28px);
+              padding-left: clamp(12px, 2.5vw, 28px);
             }
 
             .results-hero {
@@ -103,7 +105,12 @@ export const Results: FC<NavIdProps> = ({ id }) => {
 
             .results-grid {
               display: grid;
-              grid-template-columns: repeat(3, minmax(0, 1fr));
+              width: 100%;
+              min-width: 0;
+              grid-template-columns: repeat(
+                auto-fit,
+                minmax(min(100%, 290px), 1fr)
+              );
               align-items: stretch;
               gap: 18px;
             }
@@ -111,6 +118,7 @@ export const Results: FC<NavIdProps> = ({ id }) => {
             .result-card {
               box-sizing: border-box;
               display: flex;
+              width: 100%;
               min-width: 0;
               padding: 14px;
               flex-direction: column;
@@ -126,8 +134,10 @@ export const Results: FC<NavIdProps> = ({ id }) => {
             }
 
             .result-card__image {
+              box-sizing: border-box;
               display: block;
               width: 100%;
+              max-width: 100%;
               aspect-ratio: 4 / 5;
               margin-bottom: 14px;
               object-fit: cover;
@@ -138,6 +148,8 @@ export const Results: FC<NavIdProps> = ({ id }) => {
             .result-card__meta {
               display: flex;
               min-height: 27px;
+              min-width: 0;
+              flex-wrap: wrap;
               align-items: center;
               justify-content: space-between;
               gap: 8px;
@@ -147,18 +159,21 @@ export const Results: FC<NavIdProps> = ({ id }) => {
             }
 
             .result-card__badge {
+              max-width: 100%;
               padding: 5px 9px;
               color: #7a4814;
               background: #fff0dc;
               border-radius: 999px;
               font-size: 12px;
               font-weight: 700;
+              overflow-wrap: anywhere;
             }
 
             .result-card__match {
+              min-width: 0;
               color: var(--vkui--color_text_positive, #2a9b5b);
               font-weight: 700;
-              white-space: nowrap;
+              overflow-wrap: anywhere;
             }
 
             .result-card h2 {
@@ -229,18 +244,7 @@ export const Results: FC<NavIdProps> = ({ id }) => {
               gap: 10px;
             }
 
-            @media (max-width: 880px) {
-              .results-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-              }
-            }
-
             @media (max-width: 600px) {
-              .results-page {
-                padding-right: 4px;
-                padding-left: 4px;
-              }
-
               .results-grid {
                 grid-template-columns: minmax(0, 1fr);
               }
