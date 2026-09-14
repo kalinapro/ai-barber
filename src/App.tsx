@@ -26,6 +26,8 @@ import {
   Results,
   Catalog,
   SelectedHairstyle,
+  Privacy,
+  Terms,
 } from './panels';
 import {
   DEFAULT_VIEW_PANELS,
@@ -74,6 +76,8 @@ export const App = () => {
           <Results id="results" />
           <Catalog id="catalog" />
           <SelectedHairstyle id="selected" />
+          <Privacy id="privacy" />
+          <Terms id="terms" />
 
           <Persik id="persik" />
         </View>

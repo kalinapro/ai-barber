@@ -22,6 +22,8 @@ export const DEFAULT_VIEW_PANELS = {
   PERSIK: 'persik',
   CATALOG: 'catalog',
   SELECTED: 'selected',
+  PRIVACY: 'privacy',
+  TERMS: 'terms',
 } as const;
 
 export const routes = RoutesConfig.create([
@@ -87,11 +89,23 @@ export const routes = RoutesConfig.create([
   [],
 ),
 
-      createPanel(
+createPanel(
   DEFAULT_VIEW_PANELS.SELECTED,
   '/selected',
   [],
 ),
+
+      createPanel(
+        DEFAULT_VIEW_PANELS.PRIVACY,
+        '/privacy',
+        [],
+      ),
+
+      createPanel(
+        DEFAULT_VIEW_PANELS.TERMS,
+        '/terms',
+        [],
+      ),
       
       
     ]),
