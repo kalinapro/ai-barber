@@ -205,6 +205,15 @@ export const Home: FC<HomeProps> = ({ id }) => {
                 </div>
               </div>
             )}
+
+            <footer className="legal-footer">
+              <button type="button" onClick={() => routeNavigator.push('/privacy')}>
+                Политика конфиденциальности
+              </button>
+              <button type="button" onClick={() => routeNavigator.push('/terms')}>
+                Пользовательское соглашение
+              </button>
+            </footer>
           </div>
         </Div>
       </Group>
