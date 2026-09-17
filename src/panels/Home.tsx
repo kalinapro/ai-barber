@@ -10,6 +10,7 @@ import {
 
 import { UserInfo } from '@vkontakte/vk-bridge';
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
+import { Icon28FavoriteOutline, Icon28ThumbsUpOutline } from '@vkontakte/icons';
 
 import { hairstyles } from '../recommendations';
 import {
@@ -35,6 +36,8 @@ const benefits = [
   ['💬', 'Инструкция для барбера'],
   ['✂️', 'Доступ к каталогу из 20 стрижек'],
 ];
+
+const formatBadgeCount = (count: number) => count > 99 ? '99+' : count;
 
 export interface HomeProps extends NavIdProps {
   fetchedUser?: UserInfo;
@@ -68,6 +71,37 @@ export const Home: FC<HomeProps> = ({ id }) => {
       <Group>
         <Div>
           <div className="panel-content">
+            <nav className="home-navigation" aria-label="Разделы пользователя">
+              <button
+                type="button"
+                className="home-navigation__button"
+                aria-label="Избранное"
+                title="Избранное"
+                onClick={() => routeNavigator.push('/favorites')}
+              >
+                <Icon28FavoriteOutline aria-hidden="true" />
+                {favorites.length > 0 && (
+                  <span className="home-navigation__badge" aria-hidden="true">
+                    {formatBadgeCount(favorites.length)}
+                  </span>
+                )}
+              </button>
+              <button
+                type="button"
+                className="home-navigation__button"
+                aria-label="Мои предпочтения"
+                title="Мои предпочтения"
+                onClick={() => routeNavigator.push('/preferences')}
+              >
+                <Icon28ThumbsUpOutline aria-hidden="true" />
+                {feedbackCount > 0 && (
+                  <span className="home-navigation__badge" aria-hidden="true">
+                    {formatBadgeCount(feedbackCount)}
+                  </span>
+                )}
+              </button>
+            </nav>
+
             <section className="home-hero">
               <div className="home-hero__icon" aria-hidden="true">✂️</div>
               <h1>Найди стрижку, которая подходит именно тебе</h1>
@@ -90,26 +124,6 @@ export const Home: FC<HomeProps> = ({ id }) => {
                 </Button>
               </div>
             </section>
-
-            <Button
-              stretched
-              size="l"
-              mode="secondary"
-              className="favorites-entry"
-              onClick={() => routeNavigator.push('/favorites')}
-            >
-              Избранное{favorites.length > 0 ? ` · ${favorites.length}` : ''}
-            </Button>
-
-            <Button
-              stretched
-              size="l"
-              mode="tertiary"
-              className="preferences-entry"
-              onClick={() => routeNavigator.push('/preferences')}
-            >
-              Мои предпочтения{feedbackCount > 0 ? ` · ${feedbackCount}` : ''}
-            </Button>
 
             {recentHairstyles.length > 0 && (
               <section className="home-section">
