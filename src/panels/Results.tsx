@@ -349,6 +349,17 @@ export const Results: FC<NavIdProps> = ({ id }) => {
                   <Button
                     stretched
                     size="l"
+                    mode="secondary"
+                    onClick={() => {
+                      saveSelectedHairstyle(hairstyle.id);
+                      routeNavigator.push('/barber-guide');
+                    }}
+                  >
+                    Показать барберу
+                  </Button>
+                  <Button
+                    stretched
+                    size="l"
                     onClick={() => {
                       saveSelectedHairstyle(hairstyle.id);
                       routeNavigator.push('/selected');

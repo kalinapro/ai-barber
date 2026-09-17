@@ -11,6 +11,7 @@ export { Question6 } from './Question6';
 export { Results } from './Results';
 export { Catalog } from './Catalog';
 export { SelectedHairstyle } from './SelectedHairstyle';
+export { BarberGuide } from './BarberGuide';
 export { Privacy } from './Privacy';
 export { Terms } from './Terms';
 

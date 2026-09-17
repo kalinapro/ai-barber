@@ -13,6 +13,108 @@ body,
   overflow-x: hidden;
 }
 
+.barber-guide {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 860px;
+  min-width: 0;
+  margin: 0 auto;
+  padding: 4px clamp(4px, 2vw, 16px) 36px;
+}
+
+.barber-guide__empty {
+  max-width: 560px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.barber-guide__image {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  aspect-ratio: 4 / 5;
+  margin: 16px auto 22px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 20px;
+}
+
+.barber-guide__hero {
+  max-width: 660px;
+  margin: 0 auto 28px;
+  text-align: center;
+}
+
+.barber-guide__hero h1 {
+  margin: 0 0 8px;
+  font-size: clamp(30px, 6vw, 42px);
+}
+
+.barber-guide__hero p,
+.barber-guide__card p,
+.barber-guide__section p,
+.barber-guide__section li {
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.barber-guide__technical {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.barber-guide__card,
+.barber-guide__section {
+  box-sizing: border-box;
+  min-width: 0;
+  padding: 18px;
+  margin: 0 0 12px;
+  background: var(--vkui--color_background_secondary, #f2f3f5);
+  border: 1px solid var(--vkui--color_separator_primary, rgba(0, 0, 0, 0.12));
+  border-radius: 16px;
+}
+
+.barber-guide__card h3,
+.barber-guide__card p,
+.barber-guide__section h2,
+.barber-guide__section p {
+  margin-top: 0;
+}
+
+.barber-guide__card p,
+.barber-guide__section p:last-child,
+.barber-guide__section ul {
+  margin-bottom: 0;
+}
+
+.barber-guide__section ul {
+  padding-left: 22px;
+}
+
+.barber-guide__section li + li {
+  margin-top: 7px;
+}
+
+.barber-guide__disclaimer {
+  margin: 22px 4px;
+  color: var(--vkui--color_text_secondary, #6d7885);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 560px) {
+  .barber-guide__technical {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .barber-guide__card,
+  .barber-guide__section {
+    padding: 15px;
+  }
+}
+
 .home-hero {
   padding: 28px 20px;
   overflow: hidden;

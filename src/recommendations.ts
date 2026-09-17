@@ -1,4 +1,5 @@
 import { BarberAnswers } from './store';
+import { BarberGuide, barberGuides } from './barberGuides';
 
 export type Hairstyle = {
   id: string;
@@ -7,6 +8,7 @@ export type Hairstyle = {
   description: string;
   barberTip: string;
   image: string;
+  barberGuide: BarberGuide;
 
   scores: {
     hairLength?: Record<string, number>;
@@ -23,7 +25,7 @@ export type Recommendation = Hairstyle & {
   reasons: string[];
 };
 
-const hairstyleData: Omit<Hairstyle, 'image'>[] = [
+const hairstyleData: Omit<Hairstyle, 'image' | 'barberGuide'>[] = [
   // =========================
   // КОРОТКИЕ
   // =========================
@@ -1058,6 +1060,7 @@ const hairstyleData: Omit<Hairstyle, 'image'>[] = [
 ];
 export const hairstyles: Hairstyle[] = hairstyleData.map((hairstyle) => ({
   ...hairstyle,
+  barberGuide: barberGuides[hairstyle.id],
   image: `${import.meta.env.BASE_URL}hairstyles/${hairstyle.id}.webp`,
 }));
 
