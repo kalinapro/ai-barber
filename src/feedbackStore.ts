@@ -9,11 +9,14 @@ import {
   useState,
 } from 'react';
 import { Snackbar } from '@vkontakte/vkui';
+import { hairstyles } from './recommendations';
+import { queueVkStorageSet, VK_STORAGE_KEYS } from './vkStorage';
 
 export type FeedbackValue = 'like' | 'dislike';
 export type HairstyleFeedback = Record<string, FeedbackValue>;
 
 const STORAGE_KEY = 'ai-barber-feedback';
+const validIds = new Set(hairstyles.map(({ id }) => id));
 
 const isFeedbackValue = (value: unknown): value is FeedbackValue =>
   value === 'like' || value === 'dislike';
@@ -24,10 +27,9 @@ export function getFeedback(): HairstyleFeedback {
     if (!stored || typeof stored !== 'object' || Array.isArray(stored)) return {};
 
     const entries = Object.entries(stored).filter(
-      ([id, value]) => id.length > 0 && isFeedbackValue(value),
+      ([id, value]) => validIds.has(id) && isFeedbackValue(value),
     ) as [string, FeedbackValue][];
 
-    if (entries.length !== Object.keys(stored).length) return {};
     return Object.fromEntries(entries);
   } catch {
     return {};
@@ -40,6 +42,7 @@ const saveFeedback = (feedback: HairstyleFeedback) => {
   } catch {
     // Keep the in-memory UI usable when storage is unavailable.
   }
+  queueVkStorageSet(VK_STORAGE_KEYS.feedback, JSON.stringify(feedback));
 };
 
 export const getHairstyleFeedback = (id: string) => getFeedback()[id];

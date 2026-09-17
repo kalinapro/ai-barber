@@ -1,3 +1,5 @@
+import { queueVkStorageSet, VK_STORAGE_KEYS } from './vkStorage';
+
 export type BarberAnswers = {
   hairLength?: string;
   style?: string;
@@ -45,6 +47,11 @@ function restoreAnswers(): BarberAnswers {
 
 export const barberAnswers: BarberAnswers = restoreAnswers();
 
+export function hydrateBarberAnswers() {
+  for (const key of answerKeys) delete barberAnswers[key];
+  Object.assign(barberAnswers, restoreAnswers());
+}
+
 export function saveBarberAnswer(key: BarberAnswerKey, value: string) {
   barberAnswers[key] = value;
 
@@ -53,6 +60,7 @@ export function saveBarberAnswer(key: BarberAnswerKey, value: string) {
   } catch {
     // Answers remain available in memory when session storage is unavailable.
   }
+  queueVkStorageSet(VK_STORAGE_KEYS.answers, JSON.stringify(barberAnswers));
 }
 
 export function getFirstUnansweredQuestion(): string | undefined {

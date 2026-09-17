@@ -9,6 +9,7 @@ import {
 } from 'react';
 
 import { hairstyles } from './recommendations';
+import { queueVkStorageSet, VK_STORAGE_KEYS } from './vkStorage';
 
 const STORAGE_KEY = 'ai-barber-favorites';
 const validIds = new Set(hairstyles.map(({ id }) => id));
@@ -32,6 +33,7 @@ const saveFavorites = (ids: string[]) => {
   } catch {
     // React state remains usable when storage is unavailable.
   }
+  queueVkStorageSet(VK_STORAGE_KEYS.favorites, JSON.stringify(ids));
 };
 
 export function addFavorite(id: string): string[] {

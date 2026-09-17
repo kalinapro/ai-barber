@@ -20,6 +20,7 @@ import './panels.css';
 import { useFavorites } from '../favoritesStore';
 import { useHistory } from '../historyStore';
 import { useFeedback } from '../feedbackStore';
+import { getFirstUnansweredQuestion } from '../store';
 
 const steps = [
   'Ответь на 6 коротких вопросов',
@@ -118,7 +119,7 @@ export const Home: FC<HomeProps> = ({ id }) => {
                 <Button
                   stretched
                   size="l"
-                  onClick={() => routeNavigator.push('/question1')}
+                  onClick={() => routeNavigator.push(getFirstUnansweredQuestion() ?? '/results')}
                 >
                   Подобрать стрижку
                 </Button>
