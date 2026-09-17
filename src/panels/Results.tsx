@@ -10,7 +10,11 @@ import {
 
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
-import { barberAnswers, getFirstUnansweredQuestion } from '../store';
+import {
+  barberAnswers,
+  getFirstUnansweredQuestion,
+  resetBarberAnswers,
+} from '../store';
 import { getRecommendations } from '../recommendations';
 import { useSelectedHairstyle } from '../selectedHairstyleStore';
 import { FavoriteButton } from '../components/FavoriteButton';
@@ -400,7 +404,10 @@ export const Results: FC<NavIdProps> = ({ id }) => {
               stretched
               size="l"
               mode="secondary"
-              onClick={() => routeNavigator.push('/')}
+              onClick={() => {
+                resetBarberAnswers();
+                routeNavigator.push('/question1');
+              }}
             >
               Пройти подбор заново
             </Button>

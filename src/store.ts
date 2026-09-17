@@ -63,6 +63,17 @@ export function saveBarberAnswer(key: BarberAnswerKey, value: string) {
   queueVkStorageSet(VK_STORAGE_KEYS.answers, JSON.stringify(barberAnswers));
 }
 
+export function resetBarberAnswers() {
+  for (const key of answerKeys) delete barberAnswers[key];
+
+  try {
+    sessionStorage.removeItem(STORAGE_KEY);
+  } catch {
+    // Answers are still cleared in memory when session storage is unavailable.
+  }
+  queueVkStorageSet(VK_STORAGE_KEYS.answers, '');
+}
+
 export function getFirstUnansweredQuestion(): string | undefined {
   const routes: Record<BarberAnswerKey, string> = {
     hairLength: '/question1',
