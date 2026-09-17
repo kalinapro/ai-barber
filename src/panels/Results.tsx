@@ -13,6 +13,8 @@ import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 import { barberAnswers, getFirstUnansweredQuestion } from '../store';
 import { getRecommendations } from '../recommendations';
 import { useSelectedHairstyle } from '../selectedHairstyleStore';
+import { FavoriteButton } from '../components/FavoriteButton';
+import { useHistory } from '../historyStore';
 
 const MIN_MATCH_PERCENTAGE = 82;
 const MAX_MATCH_PERCENTAGE = 96;
@@ -41,6 +43,7 @@ const scoreToPercentage = (
 export const Results: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
   const { saveSelectedHairstyle } = useSelectedHairstyle();
+  const { addToHistory } = useHistory();
   const firstUnansweredQuestion = getFirstUnansweredQuestion();
 
   useEffect(() => {
@@ -126,6 +129,7 @@ export const Results: FC<NavIdProps> = ({ id }) => {
               background: var(--vkui--color_background_content, #fff);
               border: 1px solid var(--vkui--color_separator_primary, rgba(0, 0, 0, 0.12));
               border-radius: 18px;
+              position: relative;
             }
 
             .result-card--best {
@@ -292,6 +296,7 @@ export const Results: FC<NavIdProps> = ({ id }) => {
                   decoding="async"
                   loading={index === 0 ? 'eager' : 'lazy'}
                 />
+                <div className="card-favorite"><FavoriteButton hairstyleId={hairstyle.id} /></div>
 
                 <div className="result-card__meta">
                   {index === 0 ? (
@@ -362,6 +367,7 @@ export const Results: FC<NavIdProps> = ({ id }) => {
                     size="l"
                     onClick={() => {
                       saveSelectedHairstyle(hairstyle.id);
+                      addToHistory(hairstyle.id);
                       routeNavigator.push('/selected');
                     }}
                   >

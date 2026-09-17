@@ -29,11 +29,14 @@ import {
   Privacy,
   Terms,
   BarberGuide,
+  Favorites,
 } from './panels';
 import {
   DEFAULT_VIEW_PANELS,
 } from './routes';
 import { SelectedHairstyleProvider } from './selectedHairstyleStore';
+import { FavoritesProvider } from './favoritesStore';
+import { HistoryProvider } from './historyStore';
 
 export const App = () => {
   const {
@@ -59,6 +62,8 @@ export const App = () => {
 
   return (
     <SelectedHairstyleProvider>
+      <FavoritesProvider>
+        <HistoryProvider>
       <SplitLayout>
       <SplitCol>
         <View activePanel={activePanel}>
@@ -78,6 +83,7 @@ export const App = () => {
           <Catalog id="catalog" />
           <SelectedHairstyle id="selected" />
           <BarberGuide id="barber-guide" />
+          <Favorites id="favorites" />
           <Privacy id="privacy" />
           <Terms id="terms" />
 
@@ -85,6 +91,8 @@ export const App = () => {
         </View>
       </SplitCol>
       </SplitLayout>
+        </HistoryProvider>
+      </FavoritesProvider>
     </SelectedHairstyleProvider>
   );
 };
