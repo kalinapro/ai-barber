@@ -122,6 +122,15 @@ export const SelectedHairstyle: FC<NavIdProps> = ({ id }) => {
             </div>
 
             <Button
+              stretched
+              size="l"
+              style={{ marginBottom: 12 }}
+              onClick={() => routeNavigator.push('/barber-guide')}
+            >
+              Показать барберу
+            </Button>
+
+            <Button
   stretched
   size="l"
   style={{
