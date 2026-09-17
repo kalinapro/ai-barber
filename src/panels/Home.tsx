@@ -16,6 +16,8 @@ import {
   useSelectedHairstyle,
 } from '../selectedHairstyleStore';
 import './panels.css';
+import { useFavorites } from '../favoritesStore';
+import { useHistory } from '../historyStore';
 
 const steps = [
   'Ответь на 6 коротких вопросов',
@@ -39,8 +41,18 @@ export interface HomeProps extends NavIdProps {
 
 export const Home: FC<HomeProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
-  const { selectedHairstyleId, clearSelectedHairstyle } =
+  const { selectedHairstyleId, clearSelectedHairstyle, saveSelectedHairstyle } =
     useSelectedHairstyle();
+  const { favorites } = useFavorites();
+  const { history } = useHistory();
+  const recentHairstyles = history.slice(0, 3).flatMap(
+    (historyId) => hairstyles.filter(({ id: hairstyleId }) => hairstyleId === historyId),
+  );
+
+  const openHairstyle = (hairstyleId: string) => {
+    saveSelectedHairstyle(hairstyleId);
+    routeNavigator.push('/selected');
+  };
 
   const savedHairstyle = hairstyles.find(
     (item) => item.id === selectedHairstyleId,
@@ -75,6 +87,33 @@ export const Home: FC<HomeProps> = ({ id }) => {
                 </Button>
               </div>
             </section>
+
+            <Button
+              stretched
+              size="l"
+              mode="secondary"
+              className="favorites-entry"
+              onClick={() => routeNavigator.push('/favorites')}
+            >
+              Избранное{favorites.length > 0 ? ` · ${favorites.length}` : ''}
+            </Button>
+
+            {recentHairstyles.length > 0 && (
+              <section className="home-section">
+                <h2 className="home-section__title">Последние выбранные</h2>
+                <div className="recent-grid">
+                  {recentHairstyles.map((hairstyle) => (
+                    <article className="recent-card" key={hairstyle.id}>
+                      <img src={hairstyle.image} alt={hairstyle.name} loading="lazy" />
+                      <div className="recent-card__body">
+                        <h3>{hairstyle.name}</h3>
+                        <Button stretched mode="secondary" onClick={() => openHairstyle(hairstyle.id)}>Открыть</Button>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            )}
 
             <section className="home-section">
               <h2 className="home-section__title">Как это работает</h2>

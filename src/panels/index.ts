@@ -14,5 +14,6 @@ export { SelectedHairstyle } from './SelectedHairstyle';
 export { BarberGuide } from './BarberGuide';
 export { Privacy } from './Privacy';
 export { Terms } from './Terms';
+export { Favorites } from './Favorites';
 
 export type { HomeProps } from './Home';

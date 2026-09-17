@@ -12,12 +12,15 @@ import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 import { hairstyles } from '../recommendations';
 import { useSelectedHairstyle } from '../selectedHairstyleStore';
+import { FavoriteButton } from '../components/FavoriteButton';
+import { useHistory } from '../historyStore';
 
 type Category = 'Короткие' | 'Средние' | 'Длинные';
 
 export const Catalog: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
   const { saveSelectedHairstyle } = useSelectedHairstyle();
+  const { addToHistory } = useHistory();
 
   const [category, setCategory] = useState<Category>('Короткие');
 
@@ -27,6 +30,7 @@ export const Catalog: FC<NavIdProps> = ({ id }) => {
 
   const handleSelect = (hairstyleId: string) => {
   saveSelectedHairstyle(hairstyleId);
+  addToHistory(hairstyleId);
   routeNavigator.push('/selected');
 };
 
@@ -119,6 +123,7 @@ export const Catalog: FC<NavIdProps> = ({ id }) => {
                       'var(--vkui--color_background_content)',
                     display: 'flex',
                     flexDirection: 'column',
+                    position: 'relative',
                   }}
                 >
                   <img
@@ -136,6 +141,7 @@ export const Catalog: FC<NavIdProps> = ({ id }) => {
                       marginBottom: 14,
                     }}
                   />
+                  <div className="card-favorite"><FavoriteButton hairstyleId={hairstyle.id} /></div>
 
                   <h2
                     style={{

@@ -14,6 +14,7 @@ import { getPersonalizedBarberTips } from '../barberGuides';
 import { hairstyles } from '../recommendations';
 import { useSelectedHairstyle } from '../selectedHairstyleStore';
 import { barberAnswers } from '../store';
+import { FavoriteButton } from '../components/FavoriteButton';
 
 const technicalSections = [
   ['topLength', 'Верх'],
@@ -80,6 +81,7 @@ export const BarberGuide: FC<NavIdProps> = ({ id }) => {
           <header className="barber-guide__hero">
             <h1>{hairstyle.name}</h1>
             <p>{hairstyle.description}</p>
+            <div className="detail-favorite"><FavoriteButton hairstyleId={hairstyle.id} showLabel /></div>
           </header>
 
           <h2>Инструкция для барбера</h2>

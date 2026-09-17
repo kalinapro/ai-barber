@@ -12,6 +12,7 @@ import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 import { hairstyles } from '../recommendations';
 import { useSelectedHairstyle } from '../selectedHairstyleStore';
+import { FavoriteButton } from '../components/FavoriteButton';
 
 export const SelectedHairstyle: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
@@ -89,6 +90,8 @@ export const SelectedHairstyle: FC<NavIdProps> = ({ id }) => {
             >
               {hairstyle.name}
             </h1>
+
+            <div className="detail-favorite"><FavoriteButton hairstyleId={hairstyle.id} showLabel /></div>
 
             <p
               style={{
