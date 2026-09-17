@@ -26,6 +26,7 @@ export const DEFAULT_VIEW_PANELS = {
   TERMS: 'terms',
   BARBER_GUIDE: 'barber-guide',
   FAVORITES: 'favorites',
+  PREFERENCES: 'preferences',
 } as const;
 
 export const routes = RoutesConfig.create([
@@ -104,6 +105,8 @@ createPanel(
       ),
 
       createPanel(DEFAULT_VIEW_PANELS.FAVORITES, '/favorites', []),
+
+      createPanel(DEFAULT_VIEW_PANELS.PREFERENCES, '/preferences', []),
 
       createPanel(
         DEFAULT_VIEW_PANELS.PRIVACY,

@@ -30,6 +30,7 @@ import {
   Terms,
   BarberGuide,
   Favorites,
+  Preferences,
 } from './panels';
 import {
   DEFAULT_VIEW_PANELS,
@@ -37,6 +38,7 @@ import {
 import { SelectedHairstyleProvider } from './selectedHairstyleStore';
 import { FavoritesProvider } from './favoritesStore';
 import { HistoryProvider } from './historyStore';
+import { FeedbackProvider } from './feedbackStore';
 
 export const App = () => {
   const {
@@ -64,9 +66,10 @@ export const App = () => {
     <SelectedHairstyleProvider>
       <FavoritesProvider>
         <HistoryProvider>
-      <SplitLayout>
-      <SplitCol>
-        <View activePanel={activePanel}>
+          <FeedbackProvider>
+            <SplitLayout>
+              <SplitCol>
+                <View activePanel={activePanel}>
           <Home
             id="home"
             fetchedUser={fetchedUser}
@@ -84,13 +87,15 @@ export const App = () => {
           <SelectedHairstyle id="selected" />
           <BarberGuide id="barber-guide" />
           <Favorites id="favorites" />
+          <Preferences id="preferences" />
           <Privacy id="privacy" />
           <Terms id="terms" />
 
           <Persik id="persik" />
-        </View>
-      </SplitCol>
-      </SplitLayout>
+                </View>
+              </SplitCol>
+            </SplitLayout>
+          </FeedbackProvider>
         </HistoryProvider>
       </FavoritesProvider>
     </SelectedHairstyleProvider>

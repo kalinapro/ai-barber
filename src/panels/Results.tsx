@@ -15,6 +15,7 @@ import { getRecommendations } from '../recommendations';
 import { useSelectedHairstyle } from '../selectedHairstyleStore';
 import { FavoriteButton } from '../components/FavoriteButton';
 import { useHistory } from '../historyStore';
+import { FeedbackControls } from '../components/FeedbackControls';
 
 const MIN_MATCH_PERCENTAGE = 82;
 const MAX_MATCH_PERCENTAGE = 96;
@@ -349,6 +350,11 @@ export const Results: FC<NavIdProps> = ({ id }) => {
                   </b>
                   <div>{hairstyle.barberTip}</div>
                 </section>
+
+                <FeedbackControls
+                  hairstyleId={hairstyle.id}
+                  title="Как тебе этот вариант?"
+                />
 
                 <div className="result-card__actions">
                   <Button

@@ -15,6 +15,7 @@ import { hairstyles } from '../recommendations';
 import { useSelectedHairstyle } from '../selectedHairstyleStore';
 import { barberAnswers } from '../store';
 import { FavoriteButton } from '../components/FavoriteButton';
+import { FeedbackControls } from '../components/FeedbackControls';
 
 const technicalSections = [
   ['topLength', 'Верх'],
@@ -116,6 +117,7 @@ export const BarberGuide: FC<NavIdProps> = ({ id }) => {
             Инструкция носит рекомендательный характер. Финальное решение лучше
             адаптировать вместе с барбером с учётом структуры и роста волос.
           </p>
+          <FeedbackControls hairstyleId={hairstyle.id} />
           <Button stretched size="l" onClick={() => void copyInstructions()}>
             Скопировать инструкцию
           </Button>

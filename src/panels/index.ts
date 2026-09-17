@@ -15,5 +15,6 @@ export { BarberGuide } from './BarberGuide';
 export { Privacy } from './Privacy';
 export { Terms } from './Terms';
 export { Favorites } from './Favorites';
+export { Preferences } from './Preferences';
 
 export type { HomeProps } from './Home';

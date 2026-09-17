@@ -18,6 +18,7 @@ import {
 import './panels.css';
 import { useFavorites } from '../favoritesStore';
 import { useHistory } from '../historyStore';
+import { useFeedback } from '../feedbackStore';
 
 const steps = [
   'Ответь на 6 коротких вопросов',
@@ -45,6 +46,8 @@ export const Home: FC<HomeProps> = ({ id }) => {
     useSelectedHairstyle();
   const { favorites } = useFavorites();
   const { history } = useHistory();
+  const { feedback } = useFeedback();
+  const feedbackCount = Object.keys(feedback).length;
   const recentHairstyles = history.slice(0, 3).flatMap(
     (historyId) => hairstyles.filter(({ id: hairstyleId }) => hairstyleId === historyId),
   );
@@ -96,6 +99,16 @@ export const Home: FC<HomeProps> = ({ id }) => {
               onClick={() => routeNavigator.push('/favorites')}
             >
               Избранное{favorites.length > 0 ? ` · ${favorites.length}` : ''}
+            </Button>
+
+            <Button
+              stretched
+              size="l"
+              mode="tertiary"
+              className="preferences-entry"
+              onClick={() => routeNavigator.push('/preferences')}
+            >
+              Мои предпочтения{feedbackCount > 0 ? ` · ${feedbackCount}` : ''}
             </Button>
 
             {recentHairstyles.length > 0 && (

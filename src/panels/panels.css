@@ -25,6 +25,30 @@
 .card-favorite { position: absolute; top: 22px; right: 22px; z-index: 1; }
 .detail-favorite { display: flex; justify-content: center; margin: 0 0 20px; }
 .favorites-entry { margin-top: 16px; }
+.preferences-entry { margin-top: 8px; }
+
+.feedback-controls {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 14px;
+  margin: 14px 0;
+  background: var(--vkui--color_background_secondary, #f2f3f5);
+  border-radius: 12px;
+}
+.feedback-controls__title { display: block; margin-bottom: 10px; text-align: center; }
+.feedback-controls__buttons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.feedback-controls__buttons button { min-width: 0; min-height: 44px; }
+
+.preferences-section { margin: 28px 0; }
+.preferences-section > h2 { text-align: center; }
+.preferences-empty { padding: 24px; color: var(--vkui--color_text_secondary, #6d7885); background: var(--vkui--color_background_secondary, #f2f3f5); border-radius: 14px; text-align: center; }
+.preferences-intro { margin-bottom: 28px; }
+.preferences-clear { display: block; margin: 30px auto 10px; }
+.collection-card h3 { margin: 14px 0 0; font-size: 22px; }
+
+@media (max-width: 340px) {
+  .feedback-controls__buttons { grid-template-columns: 1fr; }
+}
 
 .collection-page { box-sizing: border-box; max-width: 1100px; margin: 0 auto; }
 .collection-page > h1 { text-align: center; }
