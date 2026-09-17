@@ -1,5 +1,6 @@
 import { createContext, createElement, FC, PropsWithChildren, useContext, useMemo, useState } from 'react';
 import { hairstyles } from './recommendations';
+import { queueVkStorageSet, VK_STORAGE_KEYS } from './vkStorage';
 
 const STORAGE_KEY = 'ai-barber-history';
 const MAX_HISTORY = 5;
@@ -11,6 +12,7 @@ const saveHistory = (history: string[]) => {
   } catch {
     // React state remains usable when storage is unavailable.
   }
+  queueVkStorageSet(VK_STORAGE_KEYS.history, JSON.stringify(history));
 };
 
 export function getHistory(): string[] {

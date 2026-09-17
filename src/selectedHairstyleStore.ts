@@ -9,6 +9,7 @@ import {
 } from 'react';
 
 import { hairstyles } from './recommendations';
+import { queueVkStorageSet, VK_STORAGE_KEYS } from './vkStorage';
 
 const STORAGE_KEY = 'ai-barber-selected-hairstyle';
 
@@ -53,6 +54,7 @@ export const SelectedHairstyleProvider: FC<PropsWithChildren> = ({
         } catch {
           // Selection remains available in React state when storage is unavailable.
         }
+        queueVkStorageSet(VK_STORAGE_KEYS.selected, id);
       },
       clearSelectedHairstyle: () => {
         setSelectedHairstyleId(undefined);
@@ -61,6 +63,7 @@ export const SelectedHairstyleProvider: FC<PropsWithChildren> = ({
         } catch {
           // React state is still cleared when storage is unavailable.
         }
+        queueVkStorageSet(VK_STORAGE_KEYS.selected, '');
       },
     }),
     [selectedHairstyleId],

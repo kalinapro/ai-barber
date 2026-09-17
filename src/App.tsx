@@ -8,6 +8,7 @@ import {
   View,
   SplitLayout,
   SplitCol,
+  ScreenSpinner,
 } from '@vkontakte/vkui';
 
 import {
@@ -39,6 +40,8 @@ import { SelectedHairstyleProvider } from './selectedHairstyleStore';
 import { FavoritesProvider } from './favoritesStore';
 import { HistoryProvider } from './historyStore';
 import { FeedbackProvider } from './feedbackStore';
+import { initializeUserProgress } from './progressStorage';
+import { hydrateBarberAnswers } from './store';
 
 export const App = () => {
   const {
@@ -47,8 +50,14 @@ export const App = () => {
 
   const [fetchedUser, setUser] =
     useState<UserInfo | undefined>();
+  const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
+    void initializeUserProgress().then(() => {
+      hydrateBarberAnswers();
+      setIsHydrated(true);
+    });
+
     bridge
       .send('VKWebAppGetUserInfo')
       .then((user) => {
@@ -61,6 +70,10 @@ export const App = () => {
         );
       });
   }, []);
+
+  if (!isHydrated) {
+    return <ScreenSpinner state="loading" />;
+  }
 
   return (
     <SelectedHairstyleProvider>
