@@ -26,7 +26,7 @@ export const SelectedHairstyle: FC<NavIdProps> = ({ id }) => {
   if (!hairstyle) {
     return (
       <Panel id={id}>
-        <PanelHeader>AI-Барбер</PanelHeader>
+        <PanelHeader>Личный Барбер</PanelHeader>
 
         <Group>
           <Div>

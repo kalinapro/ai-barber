@@ -54,7 +54,7 @@ export const BarberGuide: FC<NavIdProps> = ({ id }) => {
   const personalizedTips = getPersonalizedBarberTips(barberAnswers);
   const bullets = (items: string[]) => items.map((item) => `• ${item}`).join('\n');
   const copyText = [
-    `AI-Барбер — ${hairstyle.name}`,
+    `Личный Барбер — ${hairstyle.name}`,
     ...technicalSections.flatMap(([key, title]) => [title + ':', barberGuide[key], '']),
     'Что сказать барберу:', bullets(barberGuide.barberInstructions), '',
     'С учётом моих ответов:', bullets(personalizedTips), '',
