@@ -24,7 +24,7 @@ import { getFirstUnansweredQuestion } from '../store';
 
 const steps = [
   'Ответь на 6 коротких вопросов',
-  'AI-Барбер учтёт длину и особенности волос, форму лица и предпочтения',
+  'Личный Барбер учтёт длину и особенности волос, форму лица и предпочтения',
   'Получи 3 подходящие стрижки',
   'Выбери понравившийся вариант',
   'Получи подсказку, что сказать барберу',
@@ -67,7 +67,7 @@ export const Home: FC<HomeProps> = ({ id }) => {
 
   return (
     <Panel id={id}>
-      <PanelHeader>AI-Барбер</PanelHeader>
+      <PanelHeader>Личный Барбер</PanelHeader>
 
       <Group>
         <Div>
@@ -107,7 +107,7 @@ export const Home: FC<HomeProps> = ({ id }) => {
               <div className="home-hero__icon" aria-hidden="true">✂️</div>
               <h1>Найди стрижку, которая подходит именно тебе</h1>
               <p className="home-hero__description">
-                AI-Барбер подберёт варианты по твоим волосам, форме лица
+                Личный Барбер подберёт варианты по твоим волосам, форме лица
                 и стилю — и подскажет, как объяснить выбор барберу.
               </p>
               <div className="home-hero__facts" aria-label="Кратко о подборе">

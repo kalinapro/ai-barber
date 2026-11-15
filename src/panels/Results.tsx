@@ -60,7 +60,7 @@ export const Results: FC<NavIdProps> = ({ id }) => {
   if (firstUnansweredQuestion) {
     return (
       <Panel id={id}>
-        <PanelHeader>AI-Барбер</PanelHeader>
+        <PanelHeader>Личный Барбер</PanelHeader>
       </Panel>
     );
   }
@@ -72,7 +72,7 @@ export const Results: FC<NavIdProps> = ({ id }) => {
 
   return (
     <Panel id={id}>
-      <PanelHeader>AI-Барбер</PanelHeader>
+      <PanelHeader>Личный Барбер</PanelHeader>
 
       <Group>
         <Div className="results-page">
@@ -274,7 +274,7 @@ export const Results: FC<NavIdProps> = ({ id }) => {
             </div>
             <h1>Твои лучшие варианты</h1>
             <p>
-              AI-Барбер проанализировал твои ответы и выбрал
+              Личный Барбер проанализировал твои ответы и выбрал
               три наиболее подходящие стрижки.
             </p>
           </header>

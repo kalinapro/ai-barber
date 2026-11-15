@@ -46,7 +46,7 @@ export const Question1: FC<NavIdProps> = ({ id }) => {
 
   return (
     <Panel id={id}>
-      <PanelHeader>AI-Барбер</PanelHeader>
+      <PanelHeader>Личный Барбер</PanelHeader>
 
       <Group>
         <Div>
