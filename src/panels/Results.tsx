@@ -239,13 +239,6 @@ export const Results: FC<NavIdProps> = ({ id }) => {
               margin-top: 14px;
             }
 
-            .result-card__soon {
-              margin-top: -3px;
-              color: var(--vkui--color_text_secondary, #6d7885);
-              font-size: 12px;
-              text-align: center;
-            }
-
             .results-footer {
               display: grid;
               max-width: 620px;
@@ -383,10 +376,6 @@ export const Results: FC<NavIdProps> = ({ id }) => {
                   >
                     Выбрать эту стрижку
                   </Button>
-                  <Button stretched size="l" mode="secondary" disabled>
-                    Примерить на себе
-                  </Button>
-                  <div className="result-card__soon">Скоро</div>
                 </div>
               </article>
             ))}
